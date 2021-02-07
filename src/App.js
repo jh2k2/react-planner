@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Homepage from "./components/Homepage";
+import About from "./components/About";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+
+library.add(faTimes);
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Navbar />
+			<Switch>
+				<Route path="/" exact>
+					<Homepage />
+				</Route>{" "}
+				<Route path="/about" exact>
+					<About></About>
+				</Route>
+			</Switch>
+		</BrowserRouter>
+	);
 }
 
 export default App;
